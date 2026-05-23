@@ -31,3 +31,24 @@ resource "aws_s3_bucket_versioning" "app_bucket" {
     status = "Enabled"
   }
 }
+
+# Enable access logging
+resource "aws_s3_bucket_logging" "app_bucket" {
+  bucket        = aws_s3_bucket.app_bucket.id
+  target_bucket = aws_s3_bucket.app_bucket.id
+  target_prefix = "logs/"
+}
+
+# Lifecycle configuration
+resource "aws_s3_bucket_lifecycle_configuration" "app_bucket" {
+  bucket = aws_s3_bucket.app_bucket.id
+
+  rule {
+    id     = "expire-old-objects"
+    status = "Enabled"
+
+    expiration {
+      days = 90
+    }
+  }
+}
