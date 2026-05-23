@@ -35,13 +35,10 @@ A CI/CD pipeline with integrated security scanning, built with TypeScript, Docke
 
 **Trivy** found 18 vulnerabilities in the base `node:18-slim` image.
 
-**Checkov** flagged the following in Terraform:
-- ❌ S3 bucket missing KMS encryption
-- ❌ Access logging not enabled
-- ❌ Versioning not enabled
-- ❌ Cross-region replication not enabled
-
-These are documented and will be fixed
+**Checkov** — 15 passed, 3 remaining:
+- Event notifications — out of scope (requires Lambda/SQS)
+- Cross-region replication — out of scope (requires multiple buckets)
+- Multipart upload abort — known, will fix
 
 ---
 
