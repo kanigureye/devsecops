@@ -6,7 +6,8 @@ A CI/CD pipeline with integrated security scanning, built with TypeScript, Docke
 
 ## Architecture
 
-> Diagram coming soon
+<img width="351" height="383" alt="image" src="https://github.com/user-attachments/assets/13ec0d25-006d-4b19-8d62-adf8a89dfe16" />
+
 
 ---
 
