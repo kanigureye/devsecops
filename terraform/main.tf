@@ -63,3 +63,21 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "app_bucket" {
     }
   }
 }
+
+# Lifecycle configuration
+resource "aws_s3_bucket_lifecycle_configuration" "app_bucket" {
+  bucket = aws_s3_bucket.app_bucket.id
+
+  rule {
+    id     = "expire-old-objects"
+    status = "Enabled"
+
+    expiration {
+      days = 90
+    }
+
+    abort_incomplete_multipart_upload {
+      days_after_initiation = 7
+    }
+  }
+}
